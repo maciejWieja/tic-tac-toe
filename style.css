@@ -44,3 +44,9 @@
     50%  {font-size: 52px;}
     100% {font-size: 50px;}
 }
+
+footer {
+    position: absolute;
+    left: 92%;
+    top: 97%
+}

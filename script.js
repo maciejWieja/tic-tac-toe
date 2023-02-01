@@ -18,6 +18,7 @@ function fieldClick(field) {
 
         if(playerTurn == "X") moveCount++
 
+        fields[field].style.cursor = "not-allowed"
         fields[field].innerHTML = playerTurn
         board[field] = playerTurn
 
@@ -37,11 +38,19 @@ function winCondition() {
         return 0
 }
 
-function win() {
+function end() {
+
+    for(let i = 0; i < fields.length; i++) {
+        fields[i].style.cursor = "not-allowed"
+    }
 
     gameIsEnd = true
-
     boardHtml.style.opacity = .3
+}
+
+function win() {
+
+    end()
 
     resultDiv.innerHTML = `
 
@@ -54,9 +63,7 @@ function win() {
 
 function draw() {
 
-    gameIsEnd = true
-
-    boardHtml.style.opacity = .3
+    end()
 
     resultDiv.innerHTML = `
 
@@ -72,8 +79,9 @@ function resetGame() {
     gameIsEnd = false
 
     for(let i = 0; i < board.length; i++) {
-        board[i] = ""
+        fields[i].style.cursor = "pointer"
         fields[i].innerHTML = ""
+        board[i] = ""
     }
 
     boardHtml.style.opacity = 1
